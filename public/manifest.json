@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "RelationHub - Contact & Relationship Manager",
+  "version": "1.0.0",
+  "description": "Intelligent relationship sidebar that detects contacts on any webpage and helps you manage interactions, schedule meetings, and build better business relationships.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["sidebar.html", "assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
